@@ -107,7 +107,7 @@ void display7SEG(int index_led){
 					HAL_GPIO_WritePin ( LED7_D_GPIO_Port , LED7_D_Pin , GPIO_PIN_SET ) ;
 					HAL_GPIO_WritePin ( LED7_E_GPIO_Port , LED7_E_Pin , GPIO_PIN_SET ) ;
 					HAL_GPIO_WritePin ( LED7_F_GPIO_Port , LED7_F_Pin , GPIO_PIN_RESET ) ;
-					HAL_GPIO_WritePin ( LED7_G_GPIO_Port , LED7_G_Pin , GPIO_PIN_SET ) ;
+					HAL_GPIO_WritePin ( LED7_G_GPIO_Port , LED7_G_Pin , GPIO_PIN_RESET ) ;
 					break;
 				case 5:
 					HAL_GPIO_WritePin ( LED7_A_GPIO_Port , LED7_A_Pin , GPIO_PIN_RESET ) ;
