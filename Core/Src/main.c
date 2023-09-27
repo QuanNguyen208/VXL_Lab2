@@ -283,7 +283,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 } */
 
  // exercise 3
-int led_cnt = 100;
+/* int led_cnt = 100;
 int seg_cnt = 50;
 int sw_clk = 0;
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
@@ -300,7 +300,28 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 		sw_clk++;
 		if (sw_clk == 4) sw_clk = 0;
 	}
+} */
+
+ // exercise 4
+int led_cnt = 100;
+int seg_cnt = 25;
+int sw_clk = 0;
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
+	led_cnt--;
+	seg_cnt--;
+	if (led_cnt == 0){
+		led_cnt = 100;
+		HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
+	}
+	if (seg_cnt == 0){
+		seg_cnt = 25;
+		update7SEG(sw_clk , sw_clk+1);
+		display7SEG(sw_clk);
+		sw_clk++;
+		if (sw_clk == 4) sw_clk = 0;
+	}
 }
+
 
 
 

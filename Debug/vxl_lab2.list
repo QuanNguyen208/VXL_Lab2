@@ -1056,9 +1056,9 @@ static void MX_GPIO_Init(void)
 
 080007cc <HAL_TIM_PeriodElapsedCallback>:
 
- // exercise 3
+ // exercise 4
 int led_cnt = 100;
-int seg_cnt = 50;
+int seg_cnt = 25;
 int sw_clk = 0;
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
  80007cc:	b580      	push	{r7, lr}
@@ -1096,9 +1096,9 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
  8000800:	681b      	ldr	r3, [r3, #0]
  8000802:	2b00      	cmp	r3, #0
  8000804:	d11c      	bne.n	8000840 <HAL_TIM_PeriodElapsedCallback+0x74>
-		seg_cnt = 50;
+		seg_cnt = 25;
  8000806:	4b11      	ldr	r3, [pc, #68]	; (800084c <HAL_TIM_PeriodElapsedCallback+0x80>)
- 8000808:	2232      	movs	r2, #50	; 0x32
+ 8000808:	2219      	movs	r2, #25
  800080a:	601a      	str	r2, [r3, #0]
 		update7SEG(sw_clk , sw_clk+1);
  800080c:	4b11      	ldr	r3, [pc, #68]	; (8000854 <HAL_TIM_PeriodElapsedCallback+0x88>)
