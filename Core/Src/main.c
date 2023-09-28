@@ -90,6 +90,8 @@ int main(void)
   MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
   HAL_TIM_Base_Start_IT (&htim2);
+  //exercise 5
+  int hour = 15, minute = 8, second = 50;
 
   /* USER CODE END 2 */
 
@@ -100,6 +102,50 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+	  //exercise 5
+	 	second++;
+		  	  if (second >= 60) {
+		  	  	second = 0;
+		  	  	minute++;
+		  	  }
+		  	  if (minute >= 60) {
+		  	  	minute = 0;
+		  	 		hour++;
+		  	  }
+		  	  if (hour >= 24) {
+		  	  	hour = 0;
+		  	  }
+	  //update hour and minute
+		  	  	  	  // update hour
+		  		  	  update7SEG(0 , hour);
+		  		  	  updateClockBuffer (0 , hour);
+		  		  	  display7SEG(0);
+		  		  	  HAL_Delay(100);
+
+		  		  	  update7SEG(1 , hour);
+		  		  	  updateClockBuffer (1 , hour);
+		  		  	  display7SEG(1);
+		  		  	  HAL_Delay(100);
+
+		  		  	  // update minute
+		  		  	  update7SEG(2 , minute);
+		  		  	  updateClockBuffer (2 , minute);
+		  		  	  display7SEG(2);
+		  		  	  HAL_Delay(100);
+
+		  		  	  update7SEG(3 , minute);
+		  		  	  updateClockBuffer (3 , minute);
+		  		  	  display7SEG(3);
+		  		  	  HAL_Delay(100);
+
+		  		  	  // halt
+		  		  	  update7SEG(4 , 99);
+		  		  	  HAL_Delay(100);
+
+		  		  	  HAL_Delay(500);
+
+
+
   }
   /* USER CODE END 3 */
 }
@@ -226,102 +272,6 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-
- /*//exercise 1
-	 int led_cnt = 50 ;
-	 int seg_cnt = 50 ;
-	 int sw_clk = 0 ;
-	 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
-		 led_cnt-- ;
-		 seg_cnt-- ;
-		 if (led_cnt == 0){
-		 		led_cnt = 50;
-		 		HAL_GPIO_TogglePin(LED_RED_GPIO_Port, LED_RED_Pin);
-		 }
-		 if (seg_cnt == 0){
-		 		seg_cnt = 50;
-		 		update7SEG(sw_clk , sw_clk+1);
-		 		display7SEG(sw_clk);
-		 		sw_clk++;
-		 		if (sw_clk == 2) sw_clk = 0;
-
-		 	}
-	 } */
-
-/* // exercise 2
-int led_cnt = 100;
-int seg_cnt = 50;
-int sw_clk = 0;
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
-	led_cnt--;
-	seg_cnt--;
-	if (led_cnt == 0){
-		led_cnt = 100;
-		HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
-	}
-	if (seg_cnt == 0){
-		seg_cnt = 50;
-		if (sw_clk == 0) {
-			update7SEG(sw_clk , sw_clk+1);
-			display7SEG(sw_clk);
-		}
-		if (sw_clk == 1) {
-			update7SEG(sw_clk , sw_clk+1);
-			display7SEG(sw_clk);
-		}
-		if (sw_clk == 2) {
-			update7SEG(sw_clk , sw_clk+1);
-			display7SEG(sw_clk);
-		}
-		if (sw_clk == 3) {
-			update7SEG(sw_clk , 0);
-			display7SEG(sw_clk);
-		}
-		sw_clk++;
-		if (sw_clk == 4) sw_clk = 0;
-	}
-} */
-
- // exercise 3
-/* int led_cnt = 100;
-int seg_cnt = 50;
-int sw_clk = 0;
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
-	led_cnt--;
-	seg_cnt--;
-	if (led_cnt == 0){
-		led_cnt = 100;
-		HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
-	}
-	if (seg_cnt == 0){
-		seg_cnt = 50;
-		update7SEG(sw_clk , sw_clk+1);
-		display7SEG(sw_clk);
-		sw_clk++;
-		if (sw_clk == 4) sw_clk = 0;
-	}
-} */
-
- // exercise 4
-int led_cnt = 100;
-int seg_cnt = 25;
-int sw_clk = 0;
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
-	led_cnt--;
-	seg_cnt--;
-	if (led_cnt == 0){
-		led_cnt = 100;
-		HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
-	}
-	if (seg_cnt == 0){
-		seg_cnt = 25;
-		update7SEG(sw_clk , sw_clk+1);
-		display7SEG(sw_clk);
-		sw_clk++;
-		if (sw_clk == 4) sw_clk = 0;
-	}
-}
-
 
 
 

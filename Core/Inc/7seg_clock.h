@@ -9,6 +9,7 @@
 #define INC_7SEG_CLOCK_H_
 
 void display7SEG(int index_led) ;
+void updateClockBuffer (int index_led, int value);
 void update7SEG(int index_led, int val) ;
 
 #endif /* INC_7SEG_CLOCK_H_ */

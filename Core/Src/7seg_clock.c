@@ -19,6 +19,17 @@ void update7SEG(int index_led , int val){
 
 
 }
+
+void updateClockBuffer (int index_led ,int value){
+    if (index_led == 0 || index_led == 2){
+    	led_buffer[index_led] = value / 10 ;
+    }
+    if (index_led == 1 || index_led == 3){
+    	led_buffer[index_led] = value % 10 ;
+    }
+}
+
+
 void display7SEG(int index_led){
 	int temp = led_buffer[index_led] ;
 
