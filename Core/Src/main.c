@@ -20,8 +20,12 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 
+
+
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "timer.h"
+#include "7seg_clock.h"
 
 /* USER CODE END Includes */
 
@@ -57,6 +61,7 @@ static void MX_GPIO_Init(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
+
 /* USER CODE END 0 */
 
 /**
@@ -90,8 +95,10 @@ int main(void)
   MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
   HAL_TIM_Base_Start_IT (&htim2);
-  //exercise 5
-  int hour = 15, minute = 8, second = 50;
+  /* //exercise 5
+  int hour = 15, minute = 8, second = 50; */
+  //exercise 6
+  setTimer0(10);
 
   /* USER CODE END 2 */
 
@@ -102,7 +109,7 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  //exercise 5
+	  /* //exercise 5
 	 	second++;
 		  	  if (second >= 60) {
 		  	  	second = 0;
@@ -142,7 +149,13 @@ int main(void)
 		  		  	  update7SEG(4 , 99);
 		  		  	  HAL_Delay(100);
 
-		  		  	  HAL_Delay(500);
+		  		  	  HAL_Delay(500); */
+
+	  //exercise 6
+	 	  	  if (timer0_flag == 1){
+	 	  		HAL_GPIO_TogglePin(LED_RED_GPIO_Port, LED_RED_Pin);
+	 	  		setTimer0(2000);
+	 	  	  }
 
 
 
