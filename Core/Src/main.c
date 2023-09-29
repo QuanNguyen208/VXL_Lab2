@@ -154,12 +154,14 @@ int main(void)
 
 		  		  	  HAL_Delay(500); */
 
-	  //exercise 6
+	  /* //exercise 6
 	 	  	  if (timer0_flag == 1){
 	 	  		HAL_GPIO_TogglePin(LED_RED_GPIO_Port, LED_RED_Pin);
 	 	  		setTimer0(2000);
-	 	  	  }
+	 	  	  } */
+
 	  //exercise 7
+
 	 	  	  HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
 	 	  	  second++;
 	 	  	  if (second >= 60){
@@ -199,9 +201,7 @@ int main(void)
 	  		  	  // delay
 	  		  	  setTimer0(1000);
 
-
-
-  }
+  	  }
   /* USER CODE END 3 */
 }
 
