@@ -98,7 +98,10 @@ int main(void)
   /* //exercise 5
   int hour = 15, minute = 8, second = 50; */
   //exercise 6
-  setTimer0(10);
+  /* setTimer0(10); */
+  // exercise 7
+        int hour = 15, minute = 8, second = 50;
+
 
   /* USER CODE END 2 */
 
@@ -156,6 +159,45 @@ int main(void)
 	 	  		HAL_GPIO_TogglePin(LED_RED_GPIO_Port, LED_RED_Pin);
 	 	  		setTimer0(2000);
 	 	  	  }
+	  //exercise 7
+	 	  	  HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
+	 	  	  second++;
+	 	  	  if (second >= 60){
+	 	  		  second = 0 ;
+	 	  		  minute++;
+	 	  	  }
+	 	  	  if (minute >= 60) {
+	 	  		  minute = 0;
+	 	  		  hour++;
+	 	  	  }
+	 	  	  if (hour >= 24) {
+	 	  		  hour = 0;
+	 	  	  }
+	 	  	  //update hour & minute
+	 	  	  	  // update hour
+	 	  	  	  update7SEG(0 , hour);
+	  		  	  updateClockBuffer (0 , hour);
+	  		  	  display7SEG(0);
+	  		  	  HAL_Delay(100);
+
+	  		  	  update7SEG(1 , hour);
+	  		  	  updateClockBuffer (1 , hour);
+	  		  	  display7SEG(1);
+	  		  	  HAL_Delay(100);
+
+	  		  	  // update minute
+	  		  	  update7SEG(2 , minute);
+	  		  	  updateClockBuffer (2 , minute);
+	  		  	  display7SEG(2);
+	  		  	  HAL_Delay(100);
+
+	  		  	  update7SEG(3 , minute);
+	  		  	  updateClockBuffer (3 , minute);
+	  		  	  display7SEG(3);
+	  		  	  HAL_Delay(100);
+
+	  		  	  // delay
+	  		  	  setTimer0(1000);
 
 
 
