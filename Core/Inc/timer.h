@@ -14,7 +14,8 @@
 int	timer_counter	[NUMBER_OF_TIMER];
 int	timer_flag	[NUMBER_OF_TIMER];
 
-void setTimer0 ( int duration );
+
+void timer_set(int idx, int duration);
 void timer_run();
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim);
 

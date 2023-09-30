@@ -8,19 +8,25 @@
 #include "main.h"
 #include "timer.h"
 
-int timer0_counter = 0;
-int timer0_flag = 0;
 
-void setTimer0 ( int duration ){
-	timer0_counter = duration / TIMER_CYCLE ;
-	timer0_flag = 0;
+void timer_set(int idx, int duration){
+	if (idx >= NUMBER_OF_TIMER) return; //num_timer = 2
+	timer_counter[idx] = duration/TIMER_CYCLE; //timer_cycle = 10
+	timer_flag[idx] = 0 ;
 }
 
 void timer_run(){
-	if( timer0_counter > 0){
-		timer0_counter --;
-		if( timer0_counter == 0) timer0_flag = 1;
+	int i = 0 ;
+	if (i >= NUMBER_OF_TIMER) {
+		return ;
 	}
+	if (timer_counter[i] > 0) {
+	        timer_counter[i]--;
+	        if (timer_counter[i] == 0) {
+	            timer_flag[i] = 1;
+	            i++;
+	        }
+		}
 }
 
  void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){

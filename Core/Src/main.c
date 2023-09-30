@@ -95,12 +95,12 @@ int main(void)
   MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
   HAL_TIM_Base_Start_IT (&htim2);
-  /* //exercise 5
-  int hour = 15, minute = 8, second = 50; */
-  //exercise 6
-  /* setTimer0(10); */
-  // exercise 7
+
+  // exercise 8
         int hour = 15, minute = 8, second = 50;
+        int index_clk = 0;
+        timer_set(0, 10);
+        timer_set(1, 10);
 
 
   /* USER CODE END 2 */
@@ -112,56 +112,8 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  /* //exercise 5
-	 	second++;
-		  	  if (second >= 60) {
-		  	  	second = 0;
-		  	  	minute++;
-		  	  }
-		  	  if (minute >= 60) {
-		  	  	minute = 0;
-		  	 		hour++;
-		  	  }
-		  	  if (hour >= 24) {
-		  	  	hour = 0;
-		  	  }
-	  //update hour and minute
-		  	  	  	  // update hour
-		  		  	  update7SEG(0 , hour);
-		  		  	  updateClockBuffer (0 , hour);
-		  		  	  display7SEG(0);
-		  		  	  HAL_Delay(100);
-
-		  		  	  update7SEG(1 , hour);
-		  		  	  updateClockBuffer (1 , hour);
-		  		  	  display7SEG(1);
-		  		  	  HAL_Delay(100);
-
-		  		  	  // update minute
-		  		  	  update7SEG(2 , minute);
-		  		  	  updateClockBuffer (2 , minute);
-		  		  	  display7SEG(2);
-		  		  	  HAL_Delay(100);
-
-		  		  	  update7SEG(3 , minute);
-		  		  	  updateClockBuffer (3 , minute);
-		  		  	  display7SEG(3);
-		  		  	  HAL_Delay(100);
-
-		  		  	  // halt
-		  		  	  update7SEG(4 , 99);
-		  		  	  HAL_Delay(100);
-
-		  		  	  HAL_Delay(500); */
-
-	  /* //exercise 6
-	 	  	  if (timer0_flag == 1){
-	 	  		HAL_GPIO_TogglePin(LED_RED_GPIO_Port, LED_RED_Pin);
-	 	  		setTimer0(2000);
-	 	  	  } */
-
-	  //exercise 7
-
+	  	  //exercise 8
+	  	  if (timer_flag[0] == 1){
 	 	  	  HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
 	 	  	  second++;
 	 	  	  if (second >= 60){
@@ -199,9 +151,19 @@ int main(void)
 	  		  	  HAL_Delay(100);
 
 	  		  	  // delay
-	  		  	  setTimer0(1000);
+	  		  	  timer_set(0 , 1000);
 
-  	  }
+	  	  	  }
+
+	  	  if (timer_flag[1] == 1){
+	  		  //display
+	  		  display7SEG(index_clk++);
+	  		  if (index_clk > 3) index_clk = 0 ;
+	  		  //delay
+	  		  timer_set(1, 250);
+
+	  	  }
+  	 }
   /* USER CODE END 3 */
 }
 
